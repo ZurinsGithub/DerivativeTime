@@ -18,3 +18,7 @@
 4. WPF  动画应用以及缓动函数的使用
 5. Socket  与进程间通信的应用
 6. 全局快捷键的实现
+
+从百度网盘获取安装包：
+链接：https://pan.baidu.com/s/1rfM1iLcE2vz3zccR9Z4Byw?pwd=todo 
+提取码：todo
