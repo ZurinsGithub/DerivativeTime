@@ -1,0 +1,28 @@
+﻿<Window x:Name="DialogWindow" x:Class="ToDo2.Window4"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDo2"
+        mc:Ignorable="d"
+        Title="ToDo" Width="300" WindowStyle="None" BorderThickness="1,1,3,3" MaxWidth="800" MinWidth="300" MinHeight="200" MaxHeight="500" ResizeMode="NoResize" Icon="img/LOGOtodo.png" WindowStartupLocation="CenterScreen" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+    <Window.BorderBrush>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="White" Offset="0"/>
+            <GradientStop Color="#FF00AEB1" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.BorderBrush>
+    <Grid>
+        <DockPanel VerticalAlignment="Top" Height="31">
+            <Label x:Name="A1L" FontSize="16" HorizontalAlignment="Center" Content="提示"/>
+        </DockPanel>
+        <DockPanel Opacity="0" x:Name="A1DP" VerticalAlignment="Top" Height="31" Background="#FFF0F0F0" MouseEnter="A1DPMouseEnter" MouseLeave="A1DPMouseLeave" MouseDown="A1DPMouseDown">
+            <Image Height="18" Source="img/DownArrow2.png"/>
+        </DockPanel>
+        <StackPanel x:Name="A1SP" Margin="10,31,10,0">
+            <Label x:Name="A2L" FontSize="16" Content="This is text." HorizontalAlignment="Center" Margin="0,20,0,0"/>
+        </StackPanel>
+
+
+    </Grid>
+</Window>

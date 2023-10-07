@@ -1,0 +1,38 @@
+﻿<Window x:Name="A1Win" x:Class="ToDo2.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDo2"
+        mc:Ignorable="d"
+        Title="ToDo" Height="250" Width="250" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <SolidColorBrush Color="Black" Opacity="0"/>
+    </Window.Background>
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="Black" Opacity="0"/>
+        </Grid.Background>
+        <Image x:Name="A1IMG" HorizontalAlignment="Center" VerticalAlignment="Center" Source="img/迷彩logo.png" Width="150" Height="150" MouseLeftButtonDown="MLBD">
+            <Image.OpacityMask>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="1,0" x:Name="A1LGB">
+                    <GradientStop Color="Black" x:Name="A1GS" Offset="0.02"/>
+                    <GradientStop Color="Transparent" x:Name="A2GS" Offset="0.01"/>
+                </LinearGradientBrush>
+            </Image.OpacityMask>
+        </Image>
+
+    </Grid>
+    <Window.Resources>
+        <Storyboard x:Key="A2story">
+            <DoubleAnimation Storyboard.TargetName="A2GS" Storyboard.TargetProperty="Offset" From="0.01" To="1" Duration="0:0:1.5" FillBehavior="HoldEnd" BeginTime="0:0:2"></DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="A1GS" Storyboard.TargetProperty="Offset" From="0.02" To="1.5" Duration="0:0:1.5" FillBehavior="HoldEnd" BeginTime="0:0:2"></DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="A3story">
+            <DoubleAnimation Storyboard.TargetName="A1IMG" Storyboard.TargetProperty="Width" From="150" To="200" Duration="0:0:1.5" DecelerationRatio="0.5"></DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="A1IMG" Storyboard.TargetProperty="Height" From="150" To="200" Duration="0:0:1.5" DecelerationRatio="0.5"></DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="A2GS" Storyboard.TargetProperty="Offset" From="1" To="0.01" Duration="0:0:1.5" FillBehavior="HoldEnd" DecelerationRatio="0.5"></DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="A1GS" Storyboard.TargetProperty="Offset" From="1.5" To="0.02" Duration="0:0:1.5" FillBehavior="HoldEnd" DecelerationRatio="0.5"></DoubleAnimation>
+        </Storyboard>
+    </Window.Resources>
+</Window>

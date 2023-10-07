@@ -1,0 +1,32 @@
+﻿<Window x:Class="ToDo2.FlowInformation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDo2"
+        mc:Ignorable="d"
+        Title="流" Height="450" Width="250" Icon="LOGOtodo.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1">
+            <Label Content="名称："/>
+            <TextBox x:Name="A1TB" Padding="4,3"/>
+            <Label Content="时间："/>
+            <Slider x:Name="A1S" Maximum="200" Minimum="5"></Slider>
+            <DockPanel HorizontalAlignment="Center">
+                <Label Content="{Binding ElementName=A1S, Path=Value}" Width="34" HorizontalContentAlignment="Right"/>
+                <Label Content="分钟" HorizontalAlignment="Left"/>
+            </DockPanel>
+            <StackPanel x:Name="A1SP">
+                <Label Content="父级流："/>
+                <ComboBox x:Name="A1CB">
+                </ComboBox>
+            </StackPanel>
+            <Button Content="确定" Margin="0,4,0,0" Height="22" Width="100" Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

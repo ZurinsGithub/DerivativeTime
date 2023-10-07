@@ -1,0 +1,79 @@
+﻿<Window x:Class="ToDo2.TimerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDo2"
+        mc:Ignorable="d"
+        Title="ToDo2时间" AllowsTransparency="True" WindowStyle="None" Background="Transparent" Width="220" Height="300" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" Topmost="True">
+    <Window.Resources>
+        <local:ASIVC x:Key="ASIVCkey"/>
+        <local:ILAIVC x:Key="ILAIVCkey"/>
+    </Window.Resources>
+    <Grid>
+        <Canvas>
+            <Canvas RenderTransformOrigin="0.5,0.5" Canvas.Top="150" Canvas.Left="110">
+                <Canvas.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform x:Name="A1ASat" ScaleY="1" ScaleX="1"/>
+                        <SkewTransform AngleY="0" AngleX="0"/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Canvas.RenderTransform>
+                <Path x:Name="A1P" Height="300" Width="300" RenderTransformOrigin="0.5,0.5" Canvas.Top="0" Fill="{Binding Stroke, ElementName=path}" Panel.ZIndex="1" MouseLeftButtonDown="PathBtnClick" MouseEnter="PathBtnEnter" MouseLeave="PathBtnLeave">
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathFigure StartPoint="-38,-73" IsClosed="True">
+                                <ArcSegment Point="-38,73" Size="83,83"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+                <Path Height="300" Width="300" RenderTransformOrigin="0.5,0.5" Canvas.Top="0" Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Stroke="{Binding Stroke, ElementName=path}" MouseLeftButtonDown="PathDrag" Focusable="True">
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathFigure StartPoint="84,0">
+                                <ArcSegment Point="84,0.0001" Size="84,84" IsLargeArc="True"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+                <Path x:Name="path" Height="300" Width="300" Stroke="#FF0078D7" StrokeThickness="16" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1" ScaleX="1"/>
+                            <SkewTransform AngleY="0" AngleX="0"/>
+                            <RotateTransform Angle="0"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathFigure StartPoint="100,0">
+                                <ArcSegment x:Name="A1AS" Point="{Binding ElementName=A1ASc, Path=Width,Converter={StaticResource ASIVCkey}}" Size="100,100" IsLargeArc="{Binding ElementName=A1ASc, Path=Width,Converter={StaticResource ILAIVCkey}}"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+                <!-- Canvas/A1ASc：这是一个“媒介”，作用是由Width（指示“进度”）得到A1AS绘制圆环所需的属性值 -->
+                <Canvas x:Name="A1ASc" Width="0.9999" Visibility="Collapsed"/>
+            </Canvas>
+            <Label Content="↓" Width="20" Height="28" Canvas.Bottom="80" Canvas.Left="102" Foreground="White" FontSize="16" MouseEnter="PathBtnEnter" MouseLeftButtonDown="PathBtnClick"/>
+        </Canvas>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <DockPanel Width="111" Margin="0,0,0,7">
+                <Label x:Name="B1L" Content="Static" FontSize="12" Cursor="Hand" MouseLeftButtonDown="LabelBtnClick" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Label x:Name="B2L" Content="Process" Width="54" HorizontalAlignment="Right" Foreground="#FF969696" Cursor="Hand" MouseLeftButtonDown="LabelBtnClick" FontSize="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            </DockPanel>
+            <Canvas Height="38" Width="85" ClipToBounds="True">
+                <DockPanel x:Name="B1DP" Width="250" Canvas.Left="0" Margin="5,0,0,0">
+                    <TextBox x:Name="A1TB" Text="60" FontSize="18" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" MaxLength="3" Width="35" TextChanged="TextChanged" KeyDown="TBEnter" AllowDrop="False" IsTabStop="False"/>
+                    <Label x:Name="A1L" Content=" min" Canvas.Left="0" FontSize="14" HorizontalAlignment="Left" Padding="0,5"/>
+                    <Label x:Name="A2L" Content=" min" FontSize="14" HorizontalAlignment="Right" DockPanel.Dock="Right" Width="40" Padding="0,5"/>
+                    <TextBox x:Name="A2TB" Text="60" FontSize="18" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" DockPanel.Dock="Right" MaxLength="3" TextChanged="TextChanged" Width="35" AllowDrop="False" IsTabStop="False" KeyDown="TBEnter"/>
+                </DockPanel>
+            </Canvas>
+        </StackPanel>
+    </Grid>
+</Window>
